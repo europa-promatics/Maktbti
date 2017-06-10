@@ -1,0 +1,498 @@
+
+
+<!--
+    Generated template for the ListenLibrary page.
+    
+    See http://ionicframework.com/docs/components/#navigation for more info on
+    Ionic pages and navigation.
+    -->
+<ion-header>
+    <ion-navbar color="nav">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="float:left">
+            <span class="text-center" *ngIf="language=='eng'">{{bookdata.book_name}}</span>
+            <span class="text-center" *ngIf="language=='arb'">{{bookdata.book_name_arabic}}</span>
+        </ion-title>
+        <span class="icon-st">
+            <ion-icon name="search" ></ion-icon>
+        </span>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-segment class="segment-st" [(ngModel)]="segment">
+    <ion-segment-button value="listen">Listen</ion-segment-button>
+    <ion-segment-button value="content" >Content</ion-segment-button>
+    <ion-segment-button value="description">Description</ion-segment-button>
+    <ion-segment-button value="similar">Similar</ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="segment" class="segment_div">
+        <div *ngSwitchCase="'listen'">
+           <ion-card id="backid">
+             <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{bookdata.image}}" style="height: 260px; filter: blur(3px);width: 100%;">
+            <!-- <div class="image-div-st">
+                <img src="img/32487612.jpg" style="width: 100%;filter:opacity(20%);">
+            </div> -->
+            <div class="card-title image-div-st"> 
+              <img class="badi-img" src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{bookdata.image}}" >
+              <img class="cir-btn" src="img/download-circular-button.png" >
+            </div>
+           <!--  <div class="card-subtitle">64 Listings</div> -->
+            </ion-card>
+            <div>
+                <div class="div-lib-bt" style="width:49%;float: left;" (click)="onAddLibrary()">
+                    <button ion-button clear class="bu-st">
+                        <img src="img/add.png" class="icon-bu-st" height="20px" width="20px">                    
+                    Add To Library</button>
+                </div>
+                <div class="custom_border" style="float: left;"></div>
+                <div class="div-sub-bt" style="width:50%;float: left;">
+                    <button ion-button clear class="bu-st" (click)="onSubscribed()">
+                        <img src="img/subscribe-rss-button(1).png" class="icon-bu-st" height="20px" width="20px">
+                            Subscribe Now
+                     </button>
+                </div>
+            </div>
+            <div class="spacer" style="height:10px"></div>
+            <div class="text-center footer-st">
+                 <div class="player-div">
+                    <ion-icon name="rewind" ></ion-icon>
+                    <ion-icon name="play" class="play-icon" ></ion-icon>
+                    <ion-icon name="fastforward" ></ion-icon>
+                </div>
+                
+            </div>
+            <div class="spacer" style="height:10px"></div>
+           
+            <div padding class="div-summary">
+             <div class="text-center">
+                <h5 *ngIf="language=='eng'">{{bookdata.book_name}}</h5>
+                <h5 *ngIf="language=='arb'">{{bookdata.book_name_arabic}}</h5>
+                <span>By:</span>
+                <span *ngIf="language=='eng' && bookdata.author" style="text-decoration:underline;color:#2AC1D8">{{bookdata.author.author_name}}</span>
+                <span *ngIf="language=='arb' && bookdata.author" style="text-decoration:underline;color:#2AC1D8">{{bookdata.author.author_name_arabic}}</span>
+                <div class="spacer" style="height:10px"></div>
+                <div class="star-div" style="">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                </div>
+                <div class="spacer" style="height:10px"></div>
+                <span *ngIf="language=='eng'">Audio Duration:{{bookdata.audio_length}} hr</span> 
+                 <span *ngIf="language=='arb'">Audio Duration:{{bookdata.audio_length_arabic}} hr</span>  
+             </div>
+                
+                <div class="spacer" style="height:10px; border-bottom:1px solid #cecece"></div>
+                <span class="span-summary">Summary :</span>
+                <p class="text-left" *ngIf="language=='eng'">{{bookdata.description}} </p>
+                 <p class="text-left" *ngIf="language=='arb'">{{bookdata.description_arabic}} </p>
+            </div>
+            <div class="spacer" style="height:10px"></div>
+            <div class="text-center">
+            	
+            <div class="social-div-st" style="text-align: center;">
+            	<div style="font-size:16px;float: left;margin-top: 10px; margin-left: 34px;">Share :</div>
+            		<img src="img/twitter(2).png">
+            		<img src="img/facebook(2).png">
+            		<img src="img/google-plus(1).png">
+            		<img src="img/pinterest.png">
+            </div>
+            </div>
+            <div class="spacer" style="height:10px"></div>
+              <div padding class="div-summary">
+              <div>
+                  <div style="width: 50%;float: left;">
+                  <span style="text-decoration: underline #2ABFDB;">Reviews & Ratings</span>
+                  <!-- <span style="border: 1px solid #fff"></span> -->
+                <!--   <hr> -->
+                  </div> 
+                   <div style="width: 50%;float: left;">
+                     <button ion-button style="background-color:#2AC1D8;float:right;height:25px;"> Write a Review</button>
+                   </div>
+              </div>
+               
+               	
+              <!--  	<div class="spacer" style="height:32px"></div> -->
+                <div ><span>John doe</span></div>
+               	
+               	<div class="star-div" >
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                </div>
+                <div style="">
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur.</p> 
+                </div>
+                 
+            </div>
+        </div>
+        <div *ngSwitchCase="'content'"  class="content_div">
+        <div id="back-div">
+        <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{bookdata.image}}" height="100%" width="100%" class="content-back-st">
+            <div class="left-div">
+
+            <div class="text-center content-div">    
+             <span>Table Of Content</span>
+            </div>
+                <ul style="float:left" *ngIf="bookdata.content">
+                    <li  *ngFor="let data of bookdata.content.split(',') ">
+                        <span >{{data}}</span>
+                    </li>
+                   <!--  <li>
+                       <span> Memorial</span>
+                    </li>
+                    <li>
+                        <span>The Rager</span>
+                    </li>
+                    <li>
+                       <span> The Five</span>
+                    </li>
+                    <li>
+                       <span> The Killer</span>
+                    </li>
+                    <li>
+                       <span> We All Go Mad SomeTimes</span>
+                    </li>
+                    <li>
+                       <span> We All Always HAve Bourbon</span>
+                    </li>
+                    <li>
+                       <span>The Five</span>
+                    </li> -->
+                </ul>
+            </div>
+            <div  class="right-div">
+                <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{bookdata.image}}">
+            </div>
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'description'">
+            <ion-list>
+                  <ion-item>
+                        <ion-thumbnail style="margin-top:14px !important  "item-left>
+                          <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{bookdata.image}}" style="height: 153px ;width: 123px; margin-left: -7px">
+                        </ion-thumbnail>
+                        <p style="font-size:21px;color:#000" *ngIf="language=='eng'">{{bookdata.book_name}}</p>
+                        <p style="font-size:21px;color:#000" *ngIf="language=='arb'">{{bookdata.book_name_arabic}}</p>
+                        <p  style="font-size:19px;color:#000;margin-top: 6px" *ngIf="language=='eng'&& bookdata.author">By:<u style="color:#2ABFDB">{{bookdata.author.author_name}} </u> </p>
+                        <p  style="font-size:19px;color:#000;margin-top: 6px" *ngIf="language=='arb'&& bookdata.author">By:<u style="color:#2ABFDB">{{bookdata.author.author_name}} </u> </p>
+                        <p style="font-size:12px;color:#000;;margin-top: 6px"  *ngIf="language=='eng'">Audio Duration:{{bookdata.audio_length}} hr</p>
+                        <p style="font-size:12px;color:#000;;margin-top: 6px"  *ngIf="language=='arb'">Audio Duration:{{bookdata.audio_length.arabic}} hr</p>
+                        <p style="font-size:12px;color:#000;;margin-top: 6px">50+Reviews></p>
+                        <button ion-button style="margin-top: 6px;background-color:#2ABFDB ">Download this Book</button>
+                  </ion-item>
+            </ion-list>
+
+
+            <div style="border:1px solid #B7B7B7 ;
+                    margin:6px 16px !important; ">
+                        
+                    <p style="margin-left:10px">Description</p>
+
+                    <!-- <p style="color:#2ABFDB;margin-left:10px" >Characters:<u style="margin-left: 15px">Jaime stark, Tywin Stark  </u></p> -->
+
+
+
+                    <p style="margin-left: 2px;font-family: Poppins-Light" *ngIf="language=='eng' r">{{bookdata.description}}
+
+
+                    </p>
+                     <p style="margin-left: 2px;font-family: Poppins-Light" *ngIf="language=='arb' ">{{bookdata.description}}
+
+
+                    </p>
+                    </div>
+
+                    <div style="border:1px solid #B7B7B7 ;
+                    margin:0 16px !important; ">
+                        
+                    <p style="margin-left:10px">About Author</p>
+
+
+
+
+
+                    <p style="margin-left: 2px;font-family: Poppins-Light" *ngIf="language=='eng' && bookdata.author">{{bookdata.author.description}}
+
+
+                    </p>
+
+                     <p style="margin-left: 2px;font-family: Poppins-Light" *ngIf="language=='arb' && bookdata.author">{{bookdata.author.description}}
+
+
+                    </p>
+            </div>
+            
+
+        </div>
+        <div  *ngSwitchCase="'similar'">
+            <ion-grid>
+                <ion-row class="text-center" *ngIf="similarbook">
+                    <ion-col style="width: 33%" *ngFor="let simlarBook of similarbook">
+                        <div class="img-st">
+                            <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{simlarBook.image}}">
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;" *ngIf="language=='eng'">{{simlarBook.book_name}}</span>
+                             <span style="white-space: nowrap;" *ngIf="language=='arb'">{{simlarBook.book_name}}</span>
+                            <br>
+                            <span>by:</span> 
+                            <span style="text-decoration:underline;color:#2ABFDB" *ngIf="language=='eng' && bookdata.author">{{simlarBook.author.author_name}}</span>
+                            <span style="text-decoration:underline;color:#2ABFDB" *ngIf="language=='arb' && bookdata.author">{{simlarBook.author.author_name_arabic}}</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                   <!--  <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/nursebecky.jpg" >
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;">Nurse Becky Gets Shot </span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Gerry Baker</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/b1.jpg" >
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;">The Perfect Stranger</span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Megan Miranda</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col> -->
+                    <!--  <ion-col width:50>
+                        <div class="img-st">
+                        	<img src="img/nursebecky.jpg">
+                        </div>
+                        </ion-col> -->
+                </ion-row>
+               <!--  <ion-row class="text-center">
+                    <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/32324273.jpg" >
+                        </div>
+                        <div class="div-st">
+                            <span style="white-space: nowrap;">The Stars Are Fire </span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Gerry Baker</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/51Qr8-EAmEL._SY346_.jpg" >
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;">The Anatomy Of Cheating </span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Gerry Baker</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                     <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/32324273.jpg" >
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;">The Stars Are Fire </span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Gerry Baker</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                 <ion-row class="text-center">
+                    <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/b1.jpg" >
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;">The Perfect Stranger</span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Megan Miranda</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/nursebecky.jpg" >
+                        </div>
+                        <div class="div-st">
+                            <span style="white-space: nowrap;">Nurse Becky Gets Shot </span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Gerry Baker</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/b1.jpg" >
+                        </div>
+                        <div class="div-st">
+                            <span>The Perfect Stranger</span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Megan Miranda</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                   
+                 </ion-row>
+                <ion-row class="text-center">
+                    <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/32324273.jpg" >
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;">The Stars Are Fire </span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Gerry Baker</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                    <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/51Qr8-EAmEL._SY346_.jpg" >
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;">The Anatomy Of Cheating </span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Gerry Baker</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                     <ion-col width:33>
+                        <div class="img-st">
+                            <img src="img/32324273.jpg" >
+                        </div>
+                        <div class="div-st">
+                             <span style="white-space: nowrap;">The Stars Are Fire </span>
+                            <br>
+                            <span>by:</span> <span style="text-decoration:underline;color:#2ABFDB">Gerry Baker</span>
+                            <br>
+                            <div class="star-div" style="">
+                                <span style="color:white">Rating:</span>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row> --> 
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>
+<!-- <div [ngSwitch]="segment">
+    <ion-footer class="text-center footer-st" *ngSwitchCase="'listen'">
+        <div class="player-div">
+            <ion-icon name="rewind" ></ion-icon>
+            <ion-icon name="play" class="play-icon" ></ion-icon>
+            <ion-icon name="fastforward" ></ion-icon>
+        </div>
+    </ion-footer>
+</div> -->
+

@@ -1,0 +1,335 @@
+
+
+<ion-header>
+    <ion-navbar color="myorange">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title >Browse All</ion-title>
+        <span class="icon-st">
+            <ion-icon name="search" ></ion-icon>
+        </span>
+    </ion-navbar>
+</ion-header>
+<ion-content >
+    <div >
+        <ion-segment style="background-color: #DFDDDD;font-family: Poppins-Light;font-size: 15px" [(ngModel)]="segment"> 
+        <ion-segment-button value="featured" >
+            Featured
+        </ion-segment-button>
+        <ion-segment-button value="category" >
+            Categories
+        </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="segment">
+        <div *ngSwitchCase="'featured'">
+         <!--  <div *ngIf="booklist">
+               <ion-item no-lines class="class1" *ngFor="let data of booklist.recent">
+                <ion-label *ngIf="language=='eng'">
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    {{data.book_name}}
+                </ion-label>
+                 <ion-label *ngIf="language=='arb'">
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    {{data.category_name_in_arabic}}
+                </ion-label>
+            </ion-item>  
+            </div> -->
+            <div style="
+                height: 32px;
+                margin-left: 11px;
+                margin-top: 14px;">
+                <span style="color:#000;font-size: 16px">New Books </span>
+                <span style ="float: right;margin-right: 2px;color:#2ABFDB;margin-top: 2px ">View More>></span>
+            </div>
+            <ion-scroll scrollX="true">
+                <ion-row *ngIf="booklist">
+                    <ion-col *ngFor="let data of booklist.recent">
+                        <div class="smalldiv"  *ngIf="language=='eng'">
+                            <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{data.image}}" (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >{{data.book_name}}</p>
+                            <p  *ngIf="data.author" style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> {{data.author.author_name}} </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                        <div class="smalldiv" *ngIf="language=='arb'">
+                            <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{data.image}}" (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >{{data.book_name}}</p>
+                            <p  *ngIf="data.author" style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> {{data.author.author_name}} </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                   <!--  <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/2.jpg"  (click)="onBook(data)" class="img-slider1" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/4.jpg" (click)="img1(img.image_name)" class="img-slider1" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/5.jpg" (click)="img1(img.image_name)" class="img-slider1" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/6.jpg" (click)="img1(img.image_name)" class="img-slider1" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/7.jpg" (click)="img1(img.image_name)" class="img-slider1" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/8.jpg" (click)="img1(img.image_name)" class="img-slider1" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col> -->
+                </ion-row>
+            </ion-scroll>
+            <div style="
+                height: 32px;
+                margin-left: 11px;
+                margin-top: 1px;">
+                <span style="color:#000;font-size: 16px">Free Books </span>
+                <span style ="float: right;margin-right: 2px;color:#2ABFDB;margin-top: 2px ">View More>></span>
+            </div>
+            <ion-scroll scrollX="true">
+                <ion-row *ngIf="booklist">
+                    <ion-col *ngFor="let data of booklist.free">
+                        <div class="smalldiv" *ngIf="language=='eng'">
+                           <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{data.image}}"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >{{data.book_name}}</p>
+                            <p *ngIf="data.author" style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> {{data.author.author_name}} </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                         <div class="smalldiv" *ngIf="language=='arb'">
+                           <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{data.image}}"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >{{data.book_name}}</p>
+                            <p *ngIf="data.author" style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> {{data.author.author_name}} </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <!-- <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/2.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/4.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/5.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/6.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/7.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/8.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col> -->
+                </ion-row>
+            </ion-scroll>
+            <div style="
+                height: 32px;
+                margin-left: 11px;
+                margin-top: 15px;">
+                <span style="color:#000;font-size: 16px"> Books For Sale </span>
+                <span style ="float: right;margin-right: 2px;color:#2ABFDB;margin-top: 2px ">View More>></span>
+            </div>
+            <ion-scroll scrollX="true">
+                <ion-row *ngIf="booklist">
+                    <ion-col *ngFor="let data of booklist.sale">
+                        <div class="smalldiv" *ngIf="language=='eng'">
+                            <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{data.image}}"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >{{data.book_name}}</p>
+                            <p *ngIf="data.author" style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> {{data.author.author_name}} </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                        <div class="smalldiv" *ngIf="language=='arb'">
+                            <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{data.image}}"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >{{data.book_name}}</p>
+                            <p *ngIf="data.author" style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> {{data.author.author_name}} </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <!-- <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/2.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/4.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/5.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/6.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/7.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="smalldiv">
+                            <img src="img/8.jpg"  (click)="onBook(data)" class="img-slider" >
+                            <p style="margin-top:2px;color:#000; font-size: 10px" >The Perfect Stranger</p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >By : <u style="color:#2ABFDB"> J.k. rowling </u></p>
+                            <p style="margin-top:-8px;color:#000; font-size: 10px" >Rating:</p>
+                        </div>
+                    </ion-col> -->
+                </ion-row>
+            </ion-scroll>
+        </div>
+        <ion-list *ngSwitchCase="'category'" class="font-st">
+            <div *ngFor="let data of Category">
+               <ion-item no-lines class="class1">
+                <ion-label *ngIf="language=='eng'">
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    {{data.category_name_in_english}}
+                </ion-label>
+                 <ion-label *ngIf="language=='arb'">
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    {{data.category_name_in_arabic}}
+                </ion-label>
+            </ion-item>  
+            </div>
+           <!--  <ion-item no-lines class="class1">
+                <ion-label>
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Islamic
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    History
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Social Issues
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Literature and novels
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Natural Science
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Politics
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Administartion
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Economy
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Self Development
+                </ion-label>
+            </ion-item>
+            <ion-item no-lines class="class1">
+                <ion-label >
+                    <ion-icon class="iconclass"> <img src ="img/next.png" style="width: 16px;height:16px "></ion-icon>
+                    Social Science
+                </ion-label>
+            </ion-item> -->
+        </ion-list>
+    </div>
+</ion-content>
+

@@ -1,0 +1,128 @@
+
+
+<!--
+    Generated template for the MyLibrary page.
+    
+    See http://ionicframework.com/docs/components/#navigation for more info on
+    Ionic pages and navigation.
+    -->
+<ion-header>
+    <ion-navbar color="nav">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="float:left">
+            <span class="text-center">My Library</span>
+        </ion-title>
+        <span class="icon-st">
+            <ion-icon name="search" ></ion-icon>
+        </span>
+    </ion-navbar>
+</ion-header>
+<ion-content style="background-color:#fff">
+    <ion-list no-lines *ngIf="booklist">
+        <ion-item class="item-st" *ngFor="let data of booklist">
+            <ion-thumbnail item-left class="thumbnail-st">
+                <img src="http://europa.promaticstechnologies.com/audioLibrary/webroot/images/books/{{data.image}}">
+            </ion-thumbnail>
+            <h2 *ngIf="language=='eng'">{{data.book_name}}</h2>
+            <h2 *ngIf="language=='arb'">{{data.book_name_arabic}}</h2>
+            <p *ngIf="language=='eng' && data.author">By:<span style="text-decoration:underline;color:#2ABFDB ">{{data.author.author_name}}</span></p>
+            <p *ngIf="language=='arb' && data.author">By:<span style="text-decoration:underline;color:#2ABFDB ">{{data.author.author_name_arabic}}</span></p>
+            <div class="div-st" (click)="onBookClick(data)">
+                <ion-icon  style="color:white;margin-right:15px"></ion-icon>
+                Description
+            </div>
+            <ion-icon name= "ios-trash-outline" class="trash-icon" (click)="onRemove(data)"></ion-icon>
+            <ion-icon name="play" class="play-icon"></ion-icon>
+            <div class="star-div">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+            </div>
+        </ion-item>
+       <!--  <ion-item class="item-st">
+            <ion-thumbnail item-left class="thumbnail-st">
+                <img src="img/32487612.jpg">
+            </ion-thumbnail>
+            <h2>A Criminal Defense</h2>
+            <p>By:<span style="text-decoration:underline;color:#2ABFDB">William L.Myers,Jr</span></p>
+            <div class="div-st" (click)="onBookClick()">
+                <ion-icon  style="color:white;margin-right:15px"></ion-icon>
+                Description
+            </div>
+            <ion-icon name= "ios-trash-outline" class="trash-icon" (click)="onRemove()"></ion-icon>
+            <ion-icon name="play" class="play-icon"></ion-icon>
+            <div class="star-div">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+            </div>
+        </ion-item>
+        <ion-item class="item-st">
+            <ion-thumbnail item-left class="thumbnail-st">
+                <img src="img/32324273.jpg">
+            </ion-thumbnail>
+            <h2>The Stars Are Fire</h2>
+            <p>By:<span style="text-decoration:underline;color:#2ABFDB">Anita Shreve</span></p>
+            <div class="div-st" (click)="onBookClick()">
+                <ion-icon  style="color:white;margin-right:15px"></ion-icon>
+                Description
+            </div>
+            <ion-icon name= "ios-trash-outline" class="trash-icon" (click)="onRemove()"></ion-icon>
+            <ion-icon name="play" class="play-icon"></ion-icon>
+            <div class="star-div">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+            </div>
+        </ion-item>
+        <ion-item class="item-st">
+            <ion-thumbnail item-left class="thumbnail-st">
+                <img src="img/51Qr8-EAmEL._SY346_.jpg">
+            </ion-thumbnail>
+            <h2>The Anatomy Of Cheating</h2>
+            <p>By:<span style="text-decoration:underline;color:#2ABFDB">Nesley Clerge</span></p>
+            <div class="div-st" (click)="onBookClick()">
+                <ion-icon  style="color:white;margin-right:15px"></ion-icon>
+                Description
+            </div>
+            <ion-icon name= "ios-trash-outline" class="trash-icon" (click)="onRemove()"></ion-icon>
+            <ion-icon name="play" class="play-icon"></ion-icon>
+            <div class="star-div">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+            </div>
+        </ion-item>
+        <ion-item class="item-st">
+            <ion-thumbnail item-left class="thumbnail-st">
+                <img src="img/34299625.jpg">
+            </ion-thumbnail>
+            <h2>Harry's Justice</h2>
+            <p>By:<span style="text-decoration:underline;color:#2ABFDB">Andy Wiseman</span></p>
+            <div class="div-st" (click)="onBookClick()">
+                <ion-icon  style="color:white;margin-right:15px"></ion-icon>
+                Description
+            </div>
+            <ion-icon name= "ios-trash-outline" class="trash-icon" (click)="onRemove()"></ion-icon>
+            <ion-icon name="play" class="play-icon"></ion-icon>
+            <div class="star-div">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+            </div>
+        </ion-item> -->
+    </ion-list>
+</ion-content>
+

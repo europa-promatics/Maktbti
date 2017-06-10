@@ -1,0 +1,80 @@
+<!--
+  Generated template for the MyAccount page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="nav">
+ <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title class="text-center font-st">My Account</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+<div  class="profile-pic-st"> 
+		<img src="img/slide4.jpg" class="profile-pic-st">
+	<div class="user-name-st">
+		<span class="font-st">
+			John Doe
+		</span>
+		<br>
+		<span class="font-st">
+			Johndoe485@gmail.com
+		</span>
+	</div>
+</div>
+<ion-grid class="font-st" >
+	<ion-row style="text-align:center">
+		<ion-col width:50>
+			<div  (click)="onPaymentHistory()">
+				
+			<img src="img/card.png" >
+			<p>Payment History</p>
+			</div>
+		</ion-col>
+		<ion-col width:50>
+			<div (click)="onListentiming()" >	
+			<img src="img/lt.png">
+			<p>Listening Time</p>
+			</div>
+		</ion-col>
+	</ion-row>
+	<ion-row style="text-align:center">
+		<ion-col width:50>
+			<div (click)="onSubscriptionPlans()">
+				<img src="img/plan.png">
+				<p>Subscription Plans</p>
+			</div>
+		</ion-col>
+		<ion-col width:50>
+			<div (click)="onFeedback()">				
+			<img src="img/chtaa.png">
+			<p>Send Feedback</p>
+			</div>
+		</ion-col>
+	</ion-row>
+	<ion-row style="text-align:center">
+		<ion-col width:50>
+			<div>
+				<img src="img/settings.png">
+				<p>Account Settings</p>
+			</div>
+		</ion-col>
+		<ion-col width:50>
+			<!-- <div >				
+			<img src="img/chtaa.png">
+			<p>Send Feedback</p>
+			</div> -->
+		</ion-col>
+	</ion-row>
+</ion-grid>
+	
+
+
+</ion-content>
